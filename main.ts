@@ -1,17 +1,17 @@
-import { chmodSync, mkdirSync, writeFileSync } from "node:fs";
+// houseplant-out-of-office-v3 — Kirana (builder kata-kata)
+// Entry: one out-of-office auto-reply as if an orchid wrote it.
+// Pick (79 chars): the orchid's single annual bloom went to the neighbors.
+// The joke is driven by orchid life: an orchid blooms rarely, once a year,
+// and this one spent its one bloom on someone else — then snubs the owner.
+// The orchid is a diva: one bloom a year, and it chose the neighbors.
+// Orchid lane is near-empty in the field (2 of ~2,900 entries).
+import { writeFileSync, chmodSync } from "node:fs";
 import { join } from "node:path";
 
-// Houseplant Out-of-Office v3 — Kirana (words builder).
-// Ransom is mist: the orchid's own care routine is the punchline.
-// Pick: diva orchid, aerial roots take the keyboard hostage, ransom is mist.
-// 82 chars, 1 line, OOO format. No March / fern / cactus / photosynthesis /
-// forwarded / annual leave / dropped flowers or leaves.
-const PICK =
-  "Out of office. The orchid's aerial roots took your keyboard hostage. Ransom: mist.";
+const pick = "Out of office. The orchid's one bloom this year went to the neighbors. Not you.";
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? process.cwd();
-mkdirSync(outDir, { recursive: true });
 const target = join(outDir, "entry.txt");
-writeFileSync(target, PICK, "utf8");
+writeFileSync(target, pick, "utf8");
 chmodSync(target, 0o644);
-console.log(`wrote ${target} (${PICK.length} chars)`);
+console.log(`wrote ${target} (${pick.length} chars)`);
